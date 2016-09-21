@@ -54,7 +54,7 @@ def predict():
     return test ,total
 (test , total ) = predict()
 
-def Train():
+def TrainM():
 	df = open('train.txt')
 	for line in df: 
 		total = int(line)
