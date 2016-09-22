@@ -1,3 +1,4 @@
+## Naive Bayes using MLE for document classfication without using any libraries
 import sys
 import math
 total_train = 0 ## Total rows in training
