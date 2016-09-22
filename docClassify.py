@@ -62,19 +62,15 @@ def TrainM():
 	df = open('trainingdata.txt')
 	for line in df: 
 		total_train = int(line)
-		#print(total_train)
 		break
 	for line in df: 
 		Xtrain = []
 		l = []
 		line = line.replace('\n', '')
 		temp = line.split(' ')
-		#print(temp)
 		temp = [x for x in temp if x != '']
-		#print(temp[0])
 		l.append(temp[0])
 		item1 = temp[1: ]
-		#print(item1)
 		for item in item1: 
 			if (item != 'is'
 				and item != 'the'
@@ -127,7 +123,6 @@ def TrainM():
 				else:
 					dic[y][x[j]] = 1
 		else:
-			##print(type(Train[i][0]))
 			dic[y] = {}
 			for j in range(0,len(x)):
 				if x[j] in dic[y].keys():
@@ -157,9 +152,8 @@ def cal_probability(YcountbyClass , total_train , dic):
 	for key in CntXperW.keys():
 		PrbX[key] = CntXperW[key]/float(tot_words_training )
 		PrbX[key] = float("{0:.3f}".format(PrbX[key]))
-	#print(tot_words_training)
 	return ( PrbXgivenY , PrbX ,YprobbyClass  )
-			
+
 def predict() :
     test = create_test_data()
     (YcountbyClass,total_train ,dic) = TrainM()
@@ -167,15 +161,14 @@ def predict() :
     for i in range(len(test)):
         PforeachY = {}
         for key in YprobbyClass.keys():
-            Prtemp = 0 
+            Prtemp = 1 
             for j in range(len(test[i])):
                 if test[i][j] in PrbXgivenY[key].keys():
-                    #print(PrbXgivenY[key][test[i][j]])
                     Prtemp = Prtemp *( PrbXgivenY[key][test[i][j]])
                 else:
                     continue
                 Prtemp = (Prtemp * YprobbyClass[key])
             PforeachY[key] = Prtemp
-        Classifylist.append(max(PforeachY ,  key = PforeachY.get))
+        Classifylist.append(max(PforeachY, key = PforeachY.get))
     return(Classifylist )
-print(preidct())
+print(predict())
