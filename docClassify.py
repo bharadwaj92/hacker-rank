@@ -1,7 +1,6 @@
 import sys
 import math
 total_train = 0 ## Total rows in training
-#tot_words_training = 0 
 Train = []## Training matrix
 total_test = 0
 dic = {}
@@ -112,11 +111,8 @@ def TrainM():
 				and item != 'could'
 				and item != 'however'):
 				Xtrain.append(item)
-				#print(Xtrain)
 		l.append(Xtrain)
-			#print(l)
 		Train.append(l)
-	##print(Train[0][0])
 	for i in range(len(Train)):
 		y = Train[i][0]## Y value for each row
 		x = Train[i][1] ##words list in each row
@@ -164,13 +160,6 @@ def cal_probability(YcountbyClass , total_train , dic):
 	#print(tot_words_training)
 	return ( PrbXgivenY , PrbX ,YprobbyClass  )
 			
-
-#print(dic)
-
-#(YcountbyClass,total_train ,dic) = TrainM()
-#(PrbXgivenY , PrbX ,YprobbyClass  ) = cal_probability(YcountbyClass, total_train, dic)
-#print(PrbXgivenY['4']['computer'])
-
 def predict() :
     test = create_test_data()
     (YcountbyClass,total_train ,dic) = TrainM()
@@ -187,10 +176,6 @@ def predict() :
                     continue
                 Prtemp = (Prtemp * YprobbyClass[key])
             PforeachY[key] = Prtemp
-            #print(PforeachY)
         Classifylist.append(max(PforeachY ,  key = PforeachY.get))
-        #print(Classifylist)
-    #print(Classifylist)
     return(Classifylist )
-temp = predict()
-print(temp)
+print(preidct())
