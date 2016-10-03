@@ -1,4 +1,4 @@
-/*https://www.hackerrank.com/challenges/accessory-collection*/
+//https://www.hackerrank.com/challenges/accessory-collection
 import sys
 import itertools
 import math
